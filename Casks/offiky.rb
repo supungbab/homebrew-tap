@@ -1,6 +1,6 @@
 cask "offiky" do
-  version "1.0.4"
-  sha256 "3d98b8744d4ae132b19a086fbe731a68af952fa7f6ba4d0ef11a05922a58561c"
+  version "1.0.5"
+  sha256 "97034658d3c7cff25947a9541b08ed847caddc939d4da4d04524a83cc80db7df"
 
   url "https://github.com/supungbab/offiky/releases/download/v#{version}/Offiky.zip"
   name "Offiky"
@@ -19,6 +19,10 @@ cask "offiky" do
                    args: ["-dr", "com.apple.quarantine", "#{appdir}/Offiky.app"],
                    sudo: false
   end
+
+  # 실행 중인 앱 위에 파일만 덮으면 프로세스는 옛 코드로 계속 돈다.
+  # 껐다 켜기 전까지 새 버전이 아니다.
+  uninstall quit: "com.offiky.app"
 
   zap trash: "~/Library/Containers/com.offiky.app"
 end
