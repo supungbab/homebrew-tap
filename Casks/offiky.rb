@@ -11,13 +11,9 @@ cask "offiky" do
 
   app "Offiky.app"
 
-  # 공증하지 않아 Gatekeeper 가 첫 실행을 막는다. 설치 직후 격리 속성만 지운다.
-  # postflight_steps 로는 못 옮긴다 — appdir 을 가리킬 템플릿 토큰이 없어서
-  # /Applications 를 하드코딩해야 하고, appdir 을 바꿔 쓰면 조용히 실패한다
-  postflight do
-    system_command "/usr/bin/xattr",
-                   args: ["-dr", "com.apple.quarantine", "#{appdir}/Offiky.app"],
-                   sudo: false
+  # 공증하지 않아 Gatekeeper 가 첫 실행을 막는다. 설치 직후 격리 속성만 제거한다
+  postflight_steps do
+    run "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "{{appdir}}/Offiky.app"]
   end
 
   # 실행 중인 앱 위에 파일만 덮으면 프로세스는 옛 코드로 계속 돈다.
