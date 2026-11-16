@@ -1,6 +1,6 @@
 cask "offiky" do
-  version "2.60.2"
-  sha256 "89c4a11ef0d6a7e683471d5281e43658138bded099b7065aa7b7e12924bc7ccf"
+  version "2.60.3"
+  sha256 "e6ab6ddb952976a6f9492a49786740acbdee54c4a7a3c3c0c0e5607bf9506553"
 
   url "https://github.com/supungbab/offiky/releases/download/v#{version}/Offiky.zip"
   name "Offiky"
